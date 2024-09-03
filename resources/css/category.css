@@ -1,0 +1,14 @@
+.dropdown {
+    color: #fff;
+    cursor: pointer;
+    line-height: 50px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 1;
+    transform: perspective(1000px);
+}
+.dropdown-menu li {
+    margin-left: 2em;
+    margin-top: 2em;
+}
