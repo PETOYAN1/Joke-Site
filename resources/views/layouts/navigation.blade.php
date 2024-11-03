@@ -14,15 +14,23 @@
                 </div>
 
                 <!-- Navigation Links -->
+
+                <!-- Dashboard Page -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link wire:navigate :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <!-- Settings Page -->
+                <!-- Profile Page -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link wire:navigate :href="route('profile.show', Auth::user()->id)" :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}
+                    </x-nav-link>
+                </div>
+                <!-- Settings Page -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link wire:navigate :href="route('profile.edit', Auth::user()->id)" :active="request()->routeIs('profile.edit')">
+                        {{ __('Settings') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                 <h3 class="mb-2 posts dark:text-gray-200">{{$user->name}}</h3>
                 <x-p>
                     {{ $user->email }}
-                    <x-slot name="slot2">{{count($follows)  . __(' Followers')}}</x-slot>
+                    <x-slot name="slot2">{{count($follows) > 1 ? count($follows) . __(' Followers') : count($follows) . __(' Follower')}}</x-slot>
                 </x-p>
                 @if ($user->id == Auth::id())
                     <x-popup :user="$user" :follows="$follows">

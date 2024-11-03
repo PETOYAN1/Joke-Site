@@ -22,15 +22,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(3)->create();
-        User::factory(3)->create();
-        Post::factory(3)->create();
-        Like::factory(3)->create();
-        Rate::factory(3)->create();
-        View::factory(3)->create();
-        Follow::factory(3)->create();
-        Comment::factory(3)->create();
-        Reply::factory(3)->create();
+        Category::factory(20)->create();
+        User::factory(20)->create();
+        Post::factory(20)->create();
+        Like::factory(20)->create();
+        Rate::factory(20)->create();
+        View::factory(20)->create();
+        Follow::factory(20)->create();
+        Comment::factory(20)->create();
+        Reply::factory(20)->create();
 
     }
 }

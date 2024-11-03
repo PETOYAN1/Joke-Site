@@ -6,9 +6,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 
 class PostComments extends Component
@@ -60,7 +58,7 @@ class PostComments extends Component
 
         $comment = Comment::findOrFail($this->replyToCommentId);
         $comment->replies()->create([
-            'reply_text' => $this->comment,
+            'replay' => $this->comment,
             'user_id' => Auth::user()->id,
         ]);
 
@@ -74,7 +72,7 @@ class PostComments extends Component
 
     public function render()
     {
-        $comments = $this->post->comments()->with('user:id,name,avatar,created_at', 'replies:id')->latest()->get();
+        $comments = $this->post->comments()->with('user:id,name,avatar,created_at', 'replies')->latest()->get();
         return view('livewire.post-comments', compact('comments'));
     }
 }

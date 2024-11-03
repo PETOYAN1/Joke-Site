@@ -35,7 +35,7 @@
 }
 .comm_user {
     height: 4em;
-    width: 4em;
+    width: auto;
     border-radius: 50px;
 }
 .reply_answer {

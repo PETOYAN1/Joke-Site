@@ -5,7 +5,7 @@
         </h2>
         @include('layouts.search-bar')
     </x-slot>
-    <h1 class="text-center posts dark:text-gray-200 md:font-serif">{{__('Posts')}}</h1>
+    <h1 class="text-center posts dark:text-gray-200 mt-[10px]">{{__('All Posts of users')}}</h1>
     <a wire:navigate href="{{ route('dashboard.store')}}" class="create_link bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">Create</a>
     <div class="py-12">
         @include('layouts.categories')

@@ -1,9 +1,9 @@
-<div class="visible collapse" style="width: 100%" id="collapseExample{{ $post->id }}">
+<div class="collapse bg-[#f3f4f6] dark:bg-slate-900" id="collapseExample{{ $post->id }}">
       <div class="card card-body p-0 w-full">
           <strong class="m-2" style="font-size: 15px">{{ $comments->count() }} Comments</strong>
           <div class="comments_user m-2">
             @foreach ($comments as $comment)
-              <div class="flex flex-start mb-3 items-center gap-2">
+              <div class="flex flex-start mb-3 gap-2">
                 <a href="{{ route('profile.show', $comment->user->id) }}" wire:navigate>
                   <img class="comm_user"
                     src="{{ asset($comment->user->avatar) }}" alt="avatar"
@@ -33,9 +33,9 @@
                       <div class="comment_like_box d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center mt-2" style="font-size: 16px">
                           <a href="#!" class="link-muted me-2 d-flex items-center">
-                            <i class="fa-regular fa-heart"></i><small>13</small>
+                            <i class="fa-regular fa-heart"></i><small>0</small>
                           </a>
-                          <button wire:click="replyTo({{ $comment->id }})" type="button" class="link-muted d-flex items-center" id="reply" data-toggle="reply-form" data-target="{{ 'comment-' . $comment->id . '-reply-form'}}">
+                          <button wire:click="replyTo({{ $comment->id }})" type="button" class="link-muted d-flex items-center" id="reply" aria-expanded="true" data-target="{{ 'comment-' . $comment->id . '-reply-form'}}">
                             <i class="fas fa-reply me-1"></i>
                             <small>Reply</small>
                           </button>
@@ -47,10 +47,10 @@
                           <div class="d-flex items-center gap-2 ml-2">
                             <img src="{{ auth()->user()->avatar }}" class="rounded-full" style="width: 35px; height: 35px;" alt="Avatar">
                             <div class="d-flex flex-row h-10 w-full">
-                              <textarea wire:model.defer="comment" id="reply_message" data-id="{{ $comment->reply_id ?? null }}" class="w-full rounded-md shadow-sm" aria-label="With textarea" placeholder="Reply"></textarea>
+                              <textarea wire:model.defer="comment" id="reply_message" data-id="{{ $comment->reply_id ?? null }}" class="w-full rounded-md shadow-sm mt-[5px]" aria-label="With textarea" placeholder="Reply"></textarea>
                             </div>
                           </div>
-                          <div class="d-flex items-center mt-2 w-full justify-end">
+                          <div class="d-flex items-center mt-8 w-full justify-end text-right">
                             <button type="button" wire:click="replyComment" class="btn bg-transparent btn-sm ">Reply</button>
                             <button type="button" class="btn btn-sm" data-action="cancel-reply" data-target="{{ 'comment-' . $comment->id . '-reply-form'}}">Cancel</button>
                           </div>
@@ -95,7 +95,7 @@
           <div class="card-footer border-top p-0">
             <div class="input-group d-flex items-center gap-2">
               <div class="comment_content_box mx-3 mt-2">
-                <textarea wire:model="comment" id="message" data-id="{{ $comment->id ?? '' }}" class="w-full  rounded-md shadow-sm" aria-label="With textarea" placeholder="Comment"></textarea>
+                <textarea wire:model="comment" id="message{{ isset($comment->id) }}" data-id="{{ isset($comment->id) ?? '' }}" class="w-full  rounded-md shadow-sm" aria-label="With textarea" placeholder="Comment"></textarea>
                 <button wire:click.prevent="postComment" id="send_comment_btn" class="input-group-text send_comm_btn" style="padding: 10px; border-radius: 100px">
                   <i class="fa-regular fa-paper-plane"></i>
                 </button>

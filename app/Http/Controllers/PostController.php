@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     public function index(Request $request) {
-        $users = User::orderBy('created_at', 'desc')->get(['id', 'name', 'avatar', 'gender']);
+        $users = User::orderBy('created_at', 'desc')->take(30)->get(['id', 'name', 'avatar', 'gender']);
         $posts = Post::with('users:id,name,avatar,gender','comments')->where('published', true)->orderBy('created_at', 'desc');
         $categories = Category::with(["posts" => function($query){
             $query->where('posts.published', true);
